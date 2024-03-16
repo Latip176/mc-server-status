@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from enum import Enum
+from typing import Union
 from .server import Java, Bedrock
 
 application = FastAPI()
@@ -26,7 +27,7 @@ async def internal_server_error_handler(request, exc):
 
 @application.get("/api/{ServerTipe}")
 async def handler_request(
-    ServerTipe: ServerType, ip: str, port: int | None = 19132
+    ServerTipe: ServerType, ip: str, port: Union[int, None] = 19132
 ) -> dict:
     if ServerTipe not in SERVER_TYPES:
         raise HTTPException(status_code=422, detail="type server not found")
@@ -34,6 +35,6 @@ async def handler_request(
     try:
         data = Java(ip) if ServerTipe.lower() == "java" else Bedrock(ip, port)
     except Exception as e:
-        raise HTTPException(status_code=403, detail=e)
+        raise HTTPException(status_code=403, detail=str(e))
 
     return {"msg": "success", "data": data}
