@@ -36,3 +36,6 @@ async def handler_request(ServerTipe: ServerType, ip: str, port: int = 19132) ->
         raise HTTPException(status_code=403, detail=str(e))
 
     return {"msg": "success", "data": data}
+
+
+app = application
