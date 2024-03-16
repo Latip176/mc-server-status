@@ -26,9 +26,7 @@ async def internal_server_error_handler(request, exc):
 
 
 @application.get("/api/{ServerTipe}")
-async def handler_request(
-    ServerTipe: ServerType, ip: str, port: Union[int, None] = 19132
-) -> dict:
+async def handler_request(ServerTipe: ServerType, ip: str, port: int = 19132) -> dict:
     if ServerTipe not in SERVER_TYPES:
         raise HTTPException(status_code=422, detail="type server not found")
         # return {"msg": "type server is not found"}
