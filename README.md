@@ -13,14 +13,10 @@ tipe have two tipe: `java` and `bedrock`
 ```
 
 ## bedrock
-
+port `default` is `19132`
 ```
 /api/{tipe}?ip=..&port=..
 ```
-
-### info
-
-port `default` is `19132`
 
 # tech
 
