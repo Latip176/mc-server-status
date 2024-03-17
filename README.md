@@ -20,7 +20,7 @@ tipe have two tipe: `java` and `bedrock`
 
 ### info
 
-port `default` is `19132` for Bedrock and Java is None
+port `default` is `19132`
 
 # tech
 
