@@ -1,7 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from enum import Enum
-from typing import Union
 from .server import Java, Bedrock
 
 application = FastAPI()
