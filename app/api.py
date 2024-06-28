@@ -2,8 +2,17 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from enum import Enum
 from .server import Java, Bedrock
+from fastapi.middleware.cors import CORSMiddleware
 
 application = FastAPI()
+
+application.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Atur ini sesuai dengan daftar origin yang diizinkan
+    allow_credentials=True,
+    allow_methods=["*"],  # Atur ini sesuai dengan metode HTTP yang diizinkan
+    allow_headers=["*"],  # Atur ini sesuai dengan header yang diizinkan
+)
 
 SERVER_TYPES = ["java", "bedrock"]
 
